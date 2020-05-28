@@ -1,28 +1,38 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-// import App from './App'; 
-import * as serviceWorker from './serviceWorker';
-import 'antd/dist/antd.css';
-// import zhCN from 'antd/es/locale/zh_CN';
-
-// const App = (props) => {
-//   return (
-//     <div>
-//       <h1>{props.title}</h1>
-//       <p> 这是第一种函数声明组件的方式</p>
-//     </div>
-//   )
-// }
-
-// ReactDOM.render(
-//   // <React.StrictMode>
-//     <App title="测试react"/>,
-//   // </React.StrictMode>,
-//   document.getElementById('root')
-// );
+import ReactDom from 'react-dom';
+import App from './App'; 
+import zhCN from 'antd/es/locale/zh_CN';
+import { ConfigProvider } from 'antd';
+import 'antd/dist/antd.less';
+import './lessVars.less';
+import { BasicRoute } from './routes'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDom.render(
+  <ConfigProvider locale={zhCN}>
+    <Router>
+      <Switch>
+        <Route path="/home" render ={( routerProps)=>{
+          return <App {...routerProps}/>
+        }} />
+         {
+           BasicRoute.map(route =>{
+            return <Route key={route.path} path={route.path} component={route.component} />
+           })
+         }
+
+        <Redirect to="/admin" from="/" exact/>
+        <Redirect to="/404" />
+      </Switch>
+    </Router>
+ </ConfigProvider>,
+ document.getElementById('root')
+)
+
+
