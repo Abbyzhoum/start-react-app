@@ -3,7 +3,7 @@ import NotFound from './404'
 import Detail from './admin/detail'
 import Setting from './admin/setting'
 
-export default {
+export {
   Login,
   NotFound,
   Detail,

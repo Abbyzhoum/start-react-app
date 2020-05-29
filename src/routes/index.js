@@ -5,27 +5,21 @@ import {
   Setting
 } from '../views'
 
-const BasicRoute = [{
-  path: '/Login',
-  component: Login,
+export const BasicRoute = [{
+  path: '/login',
+  component: Login
 },{
-  path: '/NotFound',
+  path: '/404',
   component: NotFound,
-}, {
-  path:'/admin',
-  children: HomeRoute
 }]
 
-const HomeRoute = [{
+export const HomeRoute = [{
   path: '/home/detail',
   component: Detail,
-  exact: true,
+  title: '详情页面',
+  exact: true
 },{
   path: '/home/setting',
   component: Setting,
+  title: '设置页面'
 }]
-
-export default {
-  BasicRoute,
-  HomeRoute
-}

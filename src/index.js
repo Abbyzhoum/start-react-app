@@ -7,7 +7,7 @@ import 'antd/dist/antd.less';
 import './lessVars.less';
 import { BasicRoute } from './routes'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect
@@ -27,7 +27,7 @@ ReactDom.render(
            })
          }
 
-        <Redirect to="/admin" from="/" exact/>
+        <Redirect to="/home" from="/" exact/>
         <Redirect to="/404" />
       </Switch>
     </Router>
